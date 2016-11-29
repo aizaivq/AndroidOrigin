@@ -1,0 +1,9 @@
+#-alias 后面跟的是别名这里是alias_name
+#-keyalg 是加密方式这里是RSA
+#-validity 是有效期这里是20000
+#-keystore 就是要生成的keystore的名称这里是app.keystore           
+#然后按回车键
+#按回车后首先会提示你输入的密码：这个在签名时要用的，要记住
+#然后会再确认你的密码。
+#之后会依次叫你输入姓名、组织单位、组织名称、城市区域、省份名称、国家代码（CN）等。
+keytool -genkey -v -keystore app.keystore -alias alias_name -keyalg RSA -validity       20000

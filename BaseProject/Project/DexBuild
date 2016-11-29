@@ -1,0 +1,2 @@
+dx --dex --output=./class.dex ./bin/
+

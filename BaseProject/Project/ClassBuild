@@ -1,0 +1,1 @@
+ javac -classpath libs/android.jar -d ./bin src/com/zrk/*.java gen/com/zrk/R.java 

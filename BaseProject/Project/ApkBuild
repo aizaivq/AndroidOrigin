@@ -1,0 +1,9 @@
+#aapt package -f -S res -I libs/android.jar -A assets -M AndroidManifest.xml  -F app.apk
+
+aapt package -f -M AndroidManifest.xml -S res -I libs/android.jar -F ./resources.ap_
+
+aapt package -f -S res -I libs/android.jar -A assets -M AndroidManifest.xml  -F app.apk
+
+aapt a app.apk classes.dex 
+
+aapt a app.apk resources.ap_

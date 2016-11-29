@@ -1,0 +1,1 @@
+aapt package -m -J gen -S res -I libs/android.jar -M AndroidManifest.xml 
