@@ -1,2 +1,7 @@
 pm list instrumentation
-am instrument -w -r com.via.instrument.test/android.support.test.runner.AndroidJUnitRunner              
+am instrument -w -r com.via.instrument.test/android.support.test.runner.AndroidJUnitRunner      
+
+开始收集目标进程运行过程中的函数调用关系
+其中PROCESS是所要收集的进程，直接用进程号即可， FILE是收集后trace所在的文件，一般直接放在/sdcard 目录下，所以直接用/sdcard/文件名 即可。
+命令样例：
+am profile start 17495 /mnt/sdcard/profile.txt
