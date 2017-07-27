@@ -28,9 +28,19 @@ am stack list
 
         可以分为两种方式，一是系统自我检测触发功能，二是手动输入命令直接触发功能。手动触发功能是USB连上手机后输入adb shell am idle-maintenance直接启动，frame
 //////////////////////////////////////////////////////////////////////////////////
+am screen-compat on com.via.qa
+am screen-compad off com.via.qa
 
-
-
+//////////////////////////////////////
+sagit:/ $ bu backup -noapk                                                     
+sagit:/ $ bu backup -obb                                                       
+sagit:/ $ bu backup -noobb                                                     
+sagit:/ $ bu backup -shared                                                    
+sagit:/ $ bu backup -noshared                                                  
+sagit:/ $ bu backup -system                                                    
+sagit:/ $ bu backup -nosystem                                                  
+sagit:/ $ bu backup -all        
+////////////////////////////////
 
 
 
