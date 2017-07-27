@@ -62,12 +62,139 @@ sagit:/ $ media  dispatch play
 sagit:/ $ media  dispatch next                                                 
 sagit:/ $ media  dispatch record 
 /////////////////////////////////////////////
+pm list permission-groups
+pm list permissions
+pm list features
+pm list libraries
+pm list instrumentation
+pm list users
+pm dump com.via.qa
+pm path com.via.qa
 
+usage: pm path [--user USER_ID] PACKAGE
+       pm dump PACKAGE
+       pm install [-lrtsfd] [-i PACKAGE] [--user USER_ID] [PATH]
+       pm install-create [-lrtsfdp] [-i PACKAGE] [-S BYTES]
+               [--install-location 0/1/2]
+               [--force-uuid internal|UUID]
+       pm install-write [-S BYTES] SESSION_ID SPLIT_NAME [PATH]
+       pm install-commit SESSION_ID
+       pm install-abandon SESSION_ID
+       pm uninstall [-k] [--user USER_ID] PACKAGE
+       pm set-installer PACKAGE INSTALLER
+       pm move-package PACKAGE [internal|UUID]
+       pm move-primary-storage [internal|UUID]
+       pm clear [--user USER_ID] PACKAGE
+       pm enable [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm disable [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm disable-user [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm disable-until-used [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm default-state [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm hide [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm unhide [--user USER_ID] PACKAGE_OR_COMPONENT
+       pm grant [--user USER_ID] PACKAGE PERMISSION
+       pm revoke [--user USER_ID] PACKAGE PERMISSION
+       pm reset-permissions
+       pm set-app-link [--user USER_ID] PACKAGE {always|ask|never|undefined}
+       pm get-app-link [--user USER_ID] PACKAGE
+       pm set-install-location [0/auto] [1/internal] [2/external]
+       pm get-install-location
+       pm set-permission-enforced PERMISSION [true|false]
+       pm trim-caches DESIRED_FREE_SPACE [internal|UUID]
+       pm create-user [--profileOf USER_ID] [--managed] [--restricted] [--ephemeral] [--guest] USER_NAME
+       pm remove-user USER_ID
+       pm get-max-users
+/////////////////////////////////
+    "usage: requestsync [options]\n" +
+                "With no options, a sync will be requested for all account and all sync\n" +
+                "authorities with no extras. Options can be:\n" +
+                "    -h|--help: Display this message\n" +
+                "    -n|--account-name <ACCOUNT-NAME>\n" +
+                "    -t|--account-type <ACCOUNT-TYPE>\n" +
+                "    -a|--authority <AUTHORITY>\n" +
+                "  Add ContentResolver extras:\n" +
+                "    --is|--ignore-settings: Add SYNC_EXTRAS_IGNORE_SETTINGS\n" +
+                "    --ib|--ignore-backoff: Add SYNC_EXTRAS_IGNORE_BACKOFF\n" +
+                "    --dd|--discard-deletions: Add SYNC_EXTRAS_DISCARD_LOCAL_DELETIONS\n" +
+                "    --nr|--no-retry: Add SYNC_EXTRAS_DO_NOT_RETRY\n" +
+                "    --ex|--expedited: Add SYNC_EXTRAS_EXPEDITED\n" +
+                "    --i|--initialize: Add SYNC_EXTRAS_INITIALIZE\n" +
+                "    --m|--manual: Add SYNC_EXTRAS_MANUAL\n" +
+                "    --od|--override-deletions: Add SYNC_EXTRAS_OVERRIDE_TOO_MANY_DELETIONS\n" +
+                "    --u|--upload-only: Add SYNC_EXTRAS_UPLOAD\n" +
+                "  Add custom extras:\n" +
+                "    -e|--es|--extra-string <KEY> <VALUE>\n" +
+                "    --esn|--extra-string-null <KEY>\n" +
+                "    --ei|--extra-int <KEY> <VALUE>\n" +
+                "    --el|--extra-long <KEY> <VALUE>\n" +
+                "    --ef|--extra-float <KEY> <VALUE>\n" +
+                "    --ed|--extra-double <KEY> <VALUE>\n" +
+                "    --ez|--extra-bool <KEY> <VALUE>\n"
+///////////////////////////////////////////////////////////////////////
+adb shell screencap -p /sdcard/screen.png
+    截屏，保存至 sdcard 目录
+/////////////////////////////////////////
+#获取系统默认输入法
+#默认搜狗输入法
+C:\Users\Administrator>adb shell settings get secure default_input_method
+com.sohu.inputmethod.sogouoem/.SogouIME
 
+#默认为Appium使用中文输入时安装的输入法
+C:\Users\Administrator>adb shell settings get secure default_input_method
+io.appium.android.ime/.UnicodeIME
 
+#put命令更改默认输入法（将io.appium.android.ime/.UnicodeIME改为com.sohu.inputmethod.sogouoem/.SogouIME）
+C:\Users\Administrator>adb shell settings put secure default_input_method com.sohu.inputmethod.sogouoem/.SogouIME
 
+#获取亮度是否为自动获取
+C:\Users\Administrator>adb shell settings get system screen_brightness_mode
+1
+#获取当前亮度值
+C:\Users\Administrator>adb shell settings get system screen_brightness
+30
+#更改亮度值（亮度值在0—255之间）
+C:\Users\Administrator>adb shell settings put system screen_brightness 150
 
+#获取屏幕休眠时间
+C:\Users\Administrator>adb shell settings get system screen_off_timeout
+15000
+#更改休眠时间，10分钟
+C:\Users\Administrator>adb shell settings put system screen_off_timeout 600000
 
+#获取日期时间选项中通过网络获取时间的状态，1为允许、0为不允许
+C:\Users\Administrator>adb shell settings get global auto_time
+1
+#更改该状态，从1改为0
+C:\Users\Administrator>adb shell settings put global auto_time 0
+
+以及获取、修改wifi状态（wifi_on）、飞行模式（airlpane_mode_on）等，这里也是appium中getNetworkConnection获得设备网络状态的方法。
+////////////////////////////////////////////////////////////////
+  help     Show information about the subcommands
+    power    Control the power manager
+    data     Control mobile data connectivity
+    wifi     Control the Wi-Fi manager
+    usb      Control Usb state
+    nfc      Control NFC functions
+//////////////////////////////////////
+usage: wm [subcommand] [options]
+       wm size [reset|WxH|WdpxHdp]
+       wm density [reset|DENSITY]
+       wm overscan [reset|LEFT,TOP,RIGHT,BOTTOM]
+       wm scaling [off|auto]
+       wm screen-capture [userId] [true|false]
+
+wm size: return or override display size.
+         width and height in pixels unless suffixed with 'dp'.
+
+wm density: override display density.
+
+wm overscan: set overscan area for display.
+
+wm scaling: set display scaling mode.
+
+wm screen-capture: enable/disable screen capture.
+
+wm dismiss-keyguard: dismiss the keyguard, prompting the user for auth if necessary.
 
 
 
