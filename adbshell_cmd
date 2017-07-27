@@ -46,9 +46,22 @@ sagit:/ $ bu backup -all
 又如adb shell content query --uri content://icc/adn --projection _id:name --where "name='zhangsan'" --sort "name ASC"
 代表查询sim卡联系人中name是zhangsan的联系人的id和name 并按照name的升序排列结果。
 //////////////////////////////////////////////
-
-
-
+输入法，Ime.java
+[xuxu:~]$ adb shell ime list -s                           
+com.google.android.inputmethod.pinyin/.PinyinIME
+com.baidu.input_mi/.ImeService
+列出设备上的输入法 
+[xuxu:~]$ adb shell ime set com.baidu.input_mi/.ImeService
+Input method com.baidu.input_mi/.ImeService selected    
+/////////////////////////////////////////////////////////
+sagit:/ $ media  dispatch play                                                 
+sagit:/ $ media  dispatch pause                                                
+sagit:/ $ media  dispatch play                                                 
+sagit:/ $ media  dispatch pause                                                
+sagit:/ $ media  dispatch play                                                 
+sagit:/ $ media  dispatch next                                                 
+sagit:/ $ media  dispatch record 
+/////////////////////////////////////////////
 
 
 
